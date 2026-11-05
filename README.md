@@ -1,7 +1,7 @@
-# Michael Waiguru — Portfolio (Kinetic Swiss)
+# Michael Kariuki - Portfolio (Kinetic Swiss)
 
 Pure-typography portfolio in the Swiss International style: paper-white ground,
-near-black ink, one Swiss red. No images — the design is carried entirely by a
+near-black ink, one Swiss red. No images - the design is carried entirely by a
 strict hairline grid and a massive **kinetic variable-font headline** whose
 letters swell in weight/width near the cursor (an autonomous weight-wave runs
 on touch devices; fully static under `prefers-reduced-motion`).
@@ -23,23 +23,37 @@ fonts/            Anybody (variable), Archivo, IBM Plex Mono (self-hosted woff2)
 Any static server, e.g.:
 
 ```sh
-python3 -m http.server 8000
-# → http://localhost:8000
+py -3 -m http.server 8000
+# http://localhost:8000
 ```
 
-## Deploy (all free)
+## Deploy
 
-- **Cloudflare Pages** — dashboard → Workers & Pages → Create → Pages →
-  *Upload assets* (drag this folder), or connect the Git repo. Free custom domains + fast edge.
-- **GitHub Pages** — push to GitHub → Settings → Pages → deploy from `main` branch root.
-- **Netlify** — drag the folder onto https://app.netlify.com/drop
-- **Vercel** — `npx vercel` in this folder.
+Canonical deployment: https://michaelkariuki.waigurumichael252.workers.dev
 
-No build command; output directory is the repo root.
+This workspace copy includes the HTML, CSS, JavaScript and self-hosted fonts.
+Run from this folder:
+
+```sh
+npx --yes wrangler@4.156.0 deploy
+```
+
+`wrangler.jsonc` targets the existing worker `michaelkariuki`. Authenticate
+locally with Wrangler if needed; do not commit credentials. `.assetsignore`
+excludes tooling and secrets from public assets. The chess demo link points to
+https://chess-puzzles.waigurumichael252.workers.dev/. Cloudflare Workers Assets
+serves this folder directly - no build step.
+
+Alternatives:
+
+- **Cloudflare Pages** - Workers & Pages -> Create -> Pages -> Upload assets,
+  or connect the Git repo. No build command; output directory is the repo root.
+- **GitHub Pages** - Settings -> Pages -> deploy from the `main` branch root.
+- **Netlify** - drag the folder onto https://app.netlify.com/drop.
+- **Vercel** - `npx vercel` in this folder.
 
 ## Customize
 
-- Colors/themes: token blocks at the top of `css/style.css`
-  (`:root` = light, the guarded blocks = dark).
-- Content: all copy lives in `index.html` — projects, testimonial, email.
+- Colors/themes: token blocks at the top of `css/style.css`.
+- Content: all copy lives in `index.html`.
 - Fonts are subsetted latin woff2 from Google Fonts (OFL-licensed).
