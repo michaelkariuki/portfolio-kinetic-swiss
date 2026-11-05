@@ -39,6 +39,15 @@ test.describe('content', () => {
     }
   });
 
+  test('only finished projects are listed', async ({ page }) => {
+    await page.goto('/#work');
+    // .p-name is uppercased by CSS, so compare case-insensitively.
+    const cards = await page.locator('#work .p-name').allInnerTexts();
+    expect(cards.map((c) => c.trim().toLowerCase())).toEqual(['fixtrack', 'pulse', 'chess puzzles']);
+    await expect(page.locator('#work')).not.toContainText(/Code Alchemy/i);
+    await expect(page.locator('#work')).not.toContainText(/Hobby/i);
+  });
+
   test('every in-page nav link targets an existing section', async ({ page }) => {
     await page.goto('/');
     const anchors = await page.locator('.site-nav a').evaluateAll((nodes) =>
