@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-kinetic-swiss",
+  "private": true,
+  "type": "module",
+  "description": "Zero-dependency kinetic-typography portfolio. Live at https://michaelkariuki.waigurumichael252.workers.dev",
+  "scripts": {
+    "serve": "node e2e/server.mjs",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

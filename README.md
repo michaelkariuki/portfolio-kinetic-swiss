@@ -1,5 +1,7 @@
 # Michael Kariuki - Portfolio (Kinetic Swiss)
 
+![CI](https://github.com/michaelkariuki/portfolio-kinetic-swiss/actions/workflows/ci.yml/badge.svg)
+
 Pure-typography portfolio in the Swiss International style: paper-white ground,
 near-black ink, one Swiss red. No images - the design is carried entirely by a
 strict hairline grid and a massive **kinetic variable-font headline** whose
@@ -17,6 +19,18 @@ css/style.css     design tokens + all styling (light/dark themes)
 js/main.js        kinetic headline, marquee, theme toggle
 fonts/            Anybody (variable), Archivo, IBM Plex Mono (self-hosted woff2)
 ```
+
+## Tests
+
+The site has a Playwright suite covering content (sections, experience entry, live links), the theme toggle with persistence, and the mobile navigation rule.
+
+```sh
+npm ci
+npx playwright install chromium
+npm test
+```
+
+`npm run serve` starts the dependency-free static server the suite uses on port 4173. CI runs the same suite on every push and pull request.
 
 ## Run locally
 

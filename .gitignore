@@ -5,3 +5,5 @@ node_modules/
 .env.*
 .dev.vars
 .dev.vars.*
+test-results/
+playwright-report/
